@@ -2,7 +2,10 @@ use std::{sync::Arc, time::Duration};
 
 use axum::{Json, Router, extract::State, http::StatusCode, response::IntoResponse, routing::post};
 
-use tower_governor::{GovernorError, GovernorLayer, governor::GovernorConfigBuilder};
+use tower_governor::{
+    GovernorError, GovernorLayer, governor::GovernorConfigBuilder,
+    key_extractor::SmartIpKeyExtractor,
+};
 use validator::Validate;
 
 use crate::{
@@ -33,6 +36,7 @@ mod queries;
 pub fn auth_routes() -> Router<AppState> {
     let governor_conf = Arc::new(
         GovernorConfigBuilder::default()
+            .key_extractor(SmartIpKeyExtractor)
             .per_second(5)
             .burst_size(5)
             .error_handler(|e| {
