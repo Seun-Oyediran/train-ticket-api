@@ -57,7 +57,7 @@ pub fn auth_routes() -> Router<AppState> {
     tokio::spawn(async move {
         loop {
             tokio::time::sleep(interval).await;
-            tracing::info!("rate limiting storage size: {}", governor_limiter.len());
+            tracing::debug!("rate limiting storage size: {}", governor_limiter.len());
             governor_limiter.retain_recent();
         }
     });
