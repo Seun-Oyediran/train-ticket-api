@@ -1,0 +1,22 @@
+[package]
+name = "train-ticket"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+argon2 = "0.6.0"
+axum = { version = "0.8.9", features = ["macros"] }
+chrono = { version = "0.4.45", features = ["serde"] }
+chrono-tz = "0.10.4"
+dotenvy = "0.15.7"
+jsonwebtoken = { version = "11.1.0", features = ["rust_crypto"] }
+serde = { version = "1.0.229", features = ["derive"] }
+sqlx = { version = "0.9.0", features = ["runtime-tokio", "postgres", "macros", "uuid", "chrono"] }
+tokio = { version = "1.53.2", features = ["full"] }
+tower = { version = "0.5.3", features = ["full", "tracing"] }
+tower-http = { version = "0.7.1", features = ["full"] }
+tower_governor = { version = "=0.6.0", features = ["tracing"] }
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
+uuid = { version = "1.28.0", features = ["v4", "serde"] }
+validator = { version = "0.21.0", features = ["derive"] }

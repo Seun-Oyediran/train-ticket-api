@@ -1,0 +1,21 @@
+# Rust build output
+/target/
+
+# Environment files (secrets: database password, JWT secrets)
+.env
+.env.*
+!.env.example
+
+# Local HTTP request files (contain real access/refresh tokens)
+test.http
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
